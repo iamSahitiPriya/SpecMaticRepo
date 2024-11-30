@@ -9,25 +9,26 @@ import org.springframework.stereotype.Repository
 class ProductRepository {
 
 
-    private val memoryMap : MutableMap<ProductType,MutableList<Product>> = mutableMapOf(
-        ProductType.book to mutableListOf(Product(1,"java",ProductType.book,23)),
-        ProductType.other to mutableListOf(Product(2,"rings",ProductType.other,23)),
-        ProductType.food to mutableListOf(Product(3,"Apple",ProductType.food,23)),
-        ProductType.gadget to mutableListOf(Product(4,"phone",ProductType.gadget,23)),
+    private val memoryMap: MutableMap<ProductType, MutableList<Product>> = mutableMapOf(
+        ProductType.book to mutableListOf(Product(1, "java", ProductType.book, 23, 100)),
+        ProductType.other to mutableListOf(Product(2, "rings", ProductType.other, 23, 101)),
+        ProductType.food to mutableListOf(Product(3, "Apple", ProductType.food, 23, 1001)),
+        ProductType.gadget to mutableListOf(Product(4, "phone", ProductType.gadget, 23, 200)),
 
-    )
+        )
 
     fun findByType(type: ProductType): List<Product> {
         return memoryMap[type] ?: throw Exception("internal server error")
     }
 
     fun findAll(): List<Product> {
-        return  memoryMap.values.random()
+        return memoryMap.values.random()
     }
 
     fun save(productRequest: ProductRequest): Product {
         val index = memoryMap.values.flatten().count()
-        val newProduct = Product(index+1,productRequest.name,productRequest.type,productRequest.inventory)
+        val newProduct =
+            Product(index + 1, productRequest.name, productRequest.type, productRequest.inventory, productRequest.cost)
         return saveProduct(productRequest, newProduct)
     }
 

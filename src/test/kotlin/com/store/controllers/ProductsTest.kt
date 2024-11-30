@@ -17,9 +17,9 @@ class ProductsTest {
     fun `should create the product when request is valid`() {
         every {
             productService.create(any())
-        } returns Product(1, "Phone", ProductType.gadget, 2)
+        } returns Product(1, "Phone", ProductType.gadget, 2, 200)
         val productController = Products(productService)
-        val productRequest = ProductRequest(name = "Phone", type = ProductType.gadget, inventory = 2)
+        val productRequest = ProductRequest(name = "Phone", type = ProductType.gadget, inventory = 2, cost = 1230)
 
         val actualResponse = productController.createProduct(productRequest)
 
@@ -30,7 +30,7 @@ class ProductsTest {
     fun `should fetch the product based on type when type when is given`() {
         every {
             productService.getProducts(any())
-        } returns listOf(Product(1, "Phone", ProductType.gadget, 2))
+        } returns listOf(Product(1, "Phone", ProductType.gadget, 2, 100))
         val productController = Products(productService)
 
         val actualResponse = productController.getProducts(ProductType.gadget)
@@ -42,7 +42,7 @@ class ProductsTest {
     fun `should fetch all the products when type is not given`() {
         every {
             productService.getAllProducts()
-        } returns listOf(Product(1, "Phone", ProductType.gadget, 2))
+        } returns listOf(Product(1, "Phone", ProductType.gadget, 2, 100))
         val productController = Products(productService)
 
         val actualResponse = productController.getProducts(null)

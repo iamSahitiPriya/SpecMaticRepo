@@ -9,7 +9,8 @@ data class Product(
     val id: Int,
     val name: String,
     val type: ProductType,
-    val inventory: Int
+    val inventory: Int,
+    val cost: Int
 )
 
 data class ProductResponse(
@@ -27,7 +28,11 @@ data class ProductRequest(
     @NotNull
     @JsonDeserialize(using = IntegerWithRangeDeserializer::class)
     @JsonProperty("inventory")
-    val inventory: Int
+    val inventory: Int,
+    @NotNull
+    @JsonDeserialize(using = CostWithRangeDeserializer::class)
+    @JsonProperty("cost")
+    val cost: Int,
 )
 
 
