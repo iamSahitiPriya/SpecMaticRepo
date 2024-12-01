@@ -15,7 +15,7 @@ class CostWithRangeDeserializer : JsonDeserializer<Int>() {
 
         val value = node.asInt()
 
-        if (value <= 0) {
+        if (value < 0) {
             throw IllegalArgumentException("The value must be greater than 0 and less than 10,000.")
         }
 
