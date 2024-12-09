@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.DeserializationContext
 import com.fasterxml.jackson.databind.JsonDeserializer
 import com.fasterxml.jackson.databind.JsonNode
 
-abstract class BaseRangeDeserializer : JsonDeserializer<Int>() {
+abstract class BaseIntDeserializer : JsonDeserializer<Int>() {
 
     override fun deserialize(p: JsonParser, ctxt: DeserializationContext): Int {
         val node: JsonNode = p.codec.readTree(p)

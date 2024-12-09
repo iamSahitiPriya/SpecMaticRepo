@@ -1,6 +1,6 @@
 package com.store.models
 
-class InventoryDeserializer : BaseRangeDeserializer() {
+class InventoryDeserializer : BaseIntDeserializer() {
 
     override fun validate(value: Int) {
         if (value <= 0 || value > 9999) {

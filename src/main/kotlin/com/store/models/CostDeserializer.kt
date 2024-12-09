@@ -1,6 +1,6 @@
 package com.store.models
 
-class CostDeserializer : BaseRangeDeserializer() {
+class CostDeserializer : BaseIntDeserializer() {
 
     override fun validate(value: Int) {
         if (value < 0) {
