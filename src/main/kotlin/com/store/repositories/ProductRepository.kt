@@ -27,14 +27,14 @@ class ProductRepository {
 
     fun save(productRequest: ProductRequest): Product {
         val index = memoryMap.values.flatten().count()
-        val newProduct =
-            Product(index + 1, productRequest.name, productRequest.type, productRequest.inventory, productRequest.cost)
+        val newProduct = Product(
+            index + 1, productRequest.name, productRequest.type, productRequest.inventory, productRequest.cost ?: 0
+        )
         return saveProduct(productRequest, newProduct)
     }
 
     private fun saveProduct(
-        productRequest: ProductRequest,
-        newProduct: Product
+        productRequest: ProductRequest, newProduct: Product
     ): Product {
         if (memoryMap.containsKey(productRequest.type)) {
             val values = memoryMap[productRequest.type]

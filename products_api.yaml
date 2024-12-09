@@ -88,6 +88,7 @@ components:
         cost:
           type: integer
           minimum: 0
+          nullable: true
       required:
         - name
         - type

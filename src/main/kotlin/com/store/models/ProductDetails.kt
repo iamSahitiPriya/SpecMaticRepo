@@ -29,10 +29,9 @@ data class ProductRequest(
     @JsonDeserialize(using = IntegerWithRangeDeserializer::class)
     @JsonProperty("inventory")
     val inventory: Int,
-    @NotNull
     @JsonDeserialize(using = CostWithRangeDeserializer::class)
     @JsonProperty("cost")
-    val cost: Int,
+    val cost: Int? = 0,
 )
 
 
